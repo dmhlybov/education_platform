@@ -1,0 +1,361 @@
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-width: 320px;
+}
+
+#root {
+  isolation: isolate;
+}
+
+/* ── Surface utilities ── */
+
+.app-surface {
+  background-color: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-md);
+}
+
+.app-surface-elevated {
+  background-color: var(--app-surface-elevated);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-md);
+}
+
+/* ── Mono label ── */
+
+.app-mono-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--app-text-muted);
+}
+
+/* ── Page hero ── */
+
+.app-page-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--app-radius-md);
+  border: 1px solid var(--app-border);
+  background-color: var(--app-surface);
+}
+
+.app-page-hero::before {
+  content: '';
+  position: absolute;
+  inset: -60px auto auto -60px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(79, 142, 247, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.app-page-hero::after {
+  content: '';
+  position: absolute;
+  inset: auto -60px -60px auto;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(228, 240, 96, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Accent line decoration ── */
+
+.app-accent-line {
+  position: relative;
+}
+
+.app-accent-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 999px;
+  background: var(--app-color-primary);
+}
+
+/* ── Course roadmap ── */
+
+.course-roadmap {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scroll-snap-type: x proximity;
+}
+
+.course-roadmap__item {
+  position: relative;
+  min-width: min(280px, 82vw);
+  max-width: 320px;
+  padding-top: 36px;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.course-roadmap__item::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  right: calc(100% - 8px);
+  top: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--app-border);
+}
+
+.course-roadmap__item:first-child::before {
+  display: none;
+}
+
+.course-roadmap__item.is-done::before {
+  background: rgba(79, 142, 247, 0.4);
+}
+
+.course-roadmap__node {
+  position: absolute;
+  left: 12px;
+  top: 6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  border: 1px solid var(--app-border);
+  background: var(--app-surface-elevated);
+  transition: 180ms ease;
+}
+
+.course-roadmap__item.is-active .course-roadmap__node {
+  background: var(--app-color-primary);
+  border-color: rgba(79, 142, 247, 0.5);
+  box-shadow: 0 0 0 6px rgba(79, 142, 247, 0.12);
+}
+
+.course-roadmap__item.is-done .course-roadmap__node {
+  background: var(--app-color-success);
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.course-roadmap__card {
+  border: 1px solid var(--app-border);
+  background-color: var(--app-surface);
+  border-radius: var(--app-radius-md);
+  padding: 12px;
+  transition: 160ms ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 100%;
+}
+
+.course-roadmap__card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: transparent;
+  transition: 160ms ease;
+}
+
+.course-roadmap__item.is-active .course-roadmap__card {
+  border-color: rgba(79, 142, 247, 0.3);
+  background-color: var(--app-surface-elevated);
+}
+
+.course-roadmap__item.is-active .course-roadmap__card::before {
+  background: var(--app-color-primary);
+}
+
+.course-roadmap__item.is-done .course-roadmap__card::before {
+  background: var(--app-color-success);
+}
+
+/* ── State panels ── */
+
+.app-state-panel {
+  border-radius: var(--app-radius-md);
+  border: 1px solid var(--app-border);
+  background-color: var(--app-surface);
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.app-state-panel.is-active {
+  border-color: rgba(79, 142, 247, 0.3);
+  background-color: var(--app-surface-elevated);
+}
+
+/* ── Dashboard ── */
+
+.dashboard-metric-card {
+  background-color: var(--app-surface);
+}
+
+.dashboard-metric-card__value {
+  color: var(--app-text-primary);
+  font-family: 'Syne', sans-serif;
+  line-height: 1;
+}
+
+.dashboard-focus-panel {
+  height: 100%;
+  border-radius: var(--app-radius-md);
+  border: 1px solid rgba(79, 142, 247, 0.2);
+  background-color: var(--app-surface-elevated);
+  padding: 20px;
+}
+
+.dashboard-focus-panel__eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--app-text-muted);
+}
+
+.dashboard-focus-panel__title {
+  color: var(--app-text-primary);
+  line-height: 1.1;
+}
+
+.dashboard-focus-panel__description {
+  line-height: 1.7;
+  color: var(--app-text-secondary);
+}
+
+.dashboard-focus-panel__fact {
+  height: 100%;
+  border-radius: var(--app-radius-sm);
+  border: 1px solid var(--app-border);
+  background-color: var(--app-surface);
+  padding: 14px;
+}
+
+.dashboard-focus-panel__fact-value {
+  margin-top: 6px;
+  color: var(--app-text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.dashboard-focus-panel__footer {
+  border-top: 1px solid var(--app-border);
+  padding-top: 16px;
+}
+
+@media (max-width: 899px) {
+  .dashboard-focus-panel {
+    padding: 16px;
+  }
+}
+
+/* ── Focus ring (global) ── */
+
+:where(a,
+  button,
+  [role='button'],
+  input,
+  textarea,
+  select,
+  .MuiButtonBase-root,
+  .MuiInputBase-input):focus-visible {
+  outline: 2px solid var(--app-color-primary);
+  outline-offset: 3px;
+}
+
+
+
+
+.login-bitrix-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.login-bitrix-btn {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  overflow: hidden;
+}
+
+.login-bitrix-btn svg {
+  width: 48px;
+  height: 48px;
+  display: block;
+}
+
+.login-bitrix-btn:hover {
+  background: #fef2f4;
+
+  transform: translateY(-1px);
+}
+
+.login-bitrix-btn svg {
+  width: 48px;
+  height: 48px;
+}
+
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  color: var(--app-text-muted);
+  font-size: 13px;
+}
+
+.login-divider::before,
+.login-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--app-border);
+}
+
+/* ── Light theme overrides ── */
+
+[data-theme='light'] {
+  --app-bg: #f8f9fc;
+  --app-surface: #ffffff;
+  --app-surface-elevated: #f1f4f9;
+  --app-surface-hover: #e8edf5;
+  --app-border: rgba(0, 0, 0, 0.08);
+  --app-border-active: rgba(79, 142, 247, 0.45);
+  --app-color-primary: #4f8ef7;
+  --app-color-primary-glow: rgba(79, 142, 247, 0.12);
+  --app-color-accent: #c9b800;
+  --app-color-accent-dim: rgba(201, 184, 0, 0.12);
+  --app-text-primary: #0f1623;
+  --app-text-secondary: #3d4d6a;
+  --app-text-muted: #6b7590;
+  --app-color-success: #059669;
+  --app-color-success-dim: rgba(5, 150, 105, 0.1);
+  --app-color-danger: #dc2626;
+  --app-color-danger-dim: rgba(220, 38, 38, 0.1);
+}
+
+[data-theme='light'] .app-page-hero {
+  background-color: var(--app-surface);
+  border-color: var(--app-border);
+}
+
+[data-theme='light'] .app-page-hero::before {
+  background: radial-gradient(circle, rgba(79, 142, 247, 0.08) 0%, transparent 70%);
+}
+
+[data-theme='light'] .app-page-hero::after {
+  background: radial-gradient(circle, rgba(201, 184, 0, 0.06) 0%, transparent 70%);
+}

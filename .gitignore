@@ -1,0 +1,109 @@
+# =========================
+# Environment files
+# =========================
+.env.local
+
+
+# Python virtual environments
+env/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+.cache/
+.ipynb_checkpoints/
+
+# Python build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Poetry / Pipenv / PDM
+poetry.lock
+Pipfile.lock
+pdm.lock
+
+# Node / React dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# React / frontend build
+build/
+dist/
+out/
+.next/
+.nuxt/
+.vite/
+vite.config.ts.timestamp-*
+vite.config.js.timestamp-*
+
+# Frontend cache
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.turbo/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Logs
+logs/
+*.log
+
+# Runtime files
+*.pid
+*.seed
+*.pid.lock
+
+# Docker / local overrides
+docker-compose.override.yml
+
+# IDE / editors
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# System files
+*.tmp
+*.temp
+*.bak
+
+
+
+CLAUDE.md
+.claude/
+docs/
+CLAUDE.md
+.claude/
+errors.log
+.gitlab-ci.yml
+docker-compose.yml
+migration/versions/
+docs/
+backend/.env.common
+backend/.env.local
+backend/.env.prod
