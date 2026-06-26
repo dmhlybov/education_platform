@@ -101,7 +101,6 @@ CLAUDE.md
 .claude/
 errors.log
 .gitlab-ci.yml
-docker-compose.yml
 migration/versions/
 docs/
 backend/.env.common

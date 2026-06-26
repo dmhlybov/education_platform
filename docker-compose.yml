@@ -1,0 +1,32 @@
+services:
+  backend:
+    container_name: learning_backend
+    image: learning_backend:latest
+    env_file:
+      - backend/.env.common
+      - backend/.env.prod
+    volumes:
+      - /var/run/postgresql:/var/run/postgresql
+      - /opt/learning/data:/app/backend/data
+    environment:
+      ENV: "prod"
+      PORT: "8002"
+      SERVICE_OWNER: "backend"
+    ports:
+      - "8003:8003"
+    networks:
+      - app_net
+    restart: always
+
+  frontend:
+    container_name: learning_frontend
+    image: learning_frontend:latest
+    ports:
+      - "5175:80"
+    networks:
+      - app_net
+    restart: always
+
+networks:
+  app_net:
+    driver: bridge
